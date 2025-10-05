@@ -830,9 +830,6 @@ async def auto_filter(client, msg, spoll=False):
            for file in files
           ]
 
-# Add a separate button with a URL link
-new_button = [InlineKeyboardButton(text="🌐 Visit Website", url="https://example.com")]
-
 if offset != "":
     if total_results >= 3:
         btn.insert(0, [
@@ -840,25 +837,28 @@ if offset != "":
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#0#{req}")
         ])
-        btn.insert(1, new_button)  # Add the new button as a separate row
+            # Add separate button in its own row
+    btn.insert(1, [
+        InlineKeyboardButton("📞 sᴜᴘᴘᴏʀᴛ", url="https://t.me/your_support_link")
+    ])
     else:
         btn.insert(0, [
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#0#{req}")
-        ])
-        btn.insert(1, new_button)  # Add the new button as a separate row
+        ])        
+    btn.insert(1, [
+        InlineKeyboardButton("📞 sᴜᴘᴘᴏʀᴛ", url="https://t.me/your_support_link")
+    ])
 else:
     if total_results >= 3:
         btn.insert(0, [
             InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium")
         ])
-        btn.insert(1, new_button)  # Add the new button as a separate row
     else:
         btn.insert(0, [
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium")
         ])
-        btn.insert(1, new_button)  # Add the new button as a separate row
 
 if spoll:
     m = await msg.message.edit(f"<b><code>{search}</code> ɪs ꜰᴏᴜɴᴅ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ꜰᴏʀ ꜰɪʟᴇs 📫</b>")
