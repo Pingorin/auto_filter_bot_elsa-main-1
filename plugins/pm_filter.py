@@ -351,7 +351,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
-            return
         file_id = query.data.split('#', 1)[1]
         AKS = await client.send_cached_media(
             chat_id=BIN_CHANNEL,
