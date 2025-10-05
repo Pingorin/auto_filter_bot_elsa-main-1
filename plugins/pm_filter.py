@@ -966,36 +966,32 @@ async def advantage_spell_chok(message):
     query = query.strip() + " movie"
     try:
         movies = await get_poster(search, bulk=True)
-    except:
-        k = await message.reply(script.I_CUDNT.format(message.from_user.mention))
-        await asyncio.sleep(60)
-        await k.delete()
-        try:
-            await message.delete()
-        except:
-            pass
-        return
-    if not movies:
-        google = search.replace(" ", "+")
-        button = [[
-            InlineKeyboardButton("🔍 ᴄʜᴇᴄᴋ sᴘᴇʟʟɪɴɢ ᴏɴ ɢᴏᴏɢʟᴇ 🔍", url=f"https://www.google.com/search?q={google}")
-        ]]
-        k = await message.reply_text(text=script.I_CUDNT.format(search), reply_markup=InlineKeyboardMarkup(button))
-await asyncio.sleep(120)
-await k.delete()
-try:
-    await message.delete()
 except:
-    pass
-return
-
+    k = await message.reply(script.I_CUDNT.format(message.from_user.mention))
+    await asyncio.sleep(60)
+    await k.delete()
+    try:
+        await message.delete()
+    except:
+        pass
+    return
+if not movies:
+    google = search.replace(" ", "+")
+    button = [[
+        InlineKeyboardButton("🔍 ᴄʜᴇᴄᴋ sᴘᴇʟʟɪɴɢ ᴏɴ ɢᴏᴏɢʟᴇ 🔍", url=f"https://www.google.com/search?q={google}")
+    ]]
+    k = await message.reply_text(text=script.I_CUDNT.format(search), reply_markup=InlineKeyboardMarkup(button))
+    await asyncio.sleep(120)
+    await k.delete()
+    try:
+        await message.delete()
+    except:
+        pass
+    return
 user = message.from_user.id if message.from_user else 0
-buttons = []  # Initialize an empty buttons list
-# Remove the inline button with 'spol' callback_data by not including it
-for movie in movies:
-    # Optionally, add other buttons here if needed, but skipping spol button
-    pass
-
+buttons = [[
+    InlineKeyboardButton(text=movie.get('title'), callback_data=f"movie#{movie.movieID}#{user}")
+] for movie in movies]
 buttons.append(
     [InlineKeyboardButton(text="🚫 ᴄʟᴏsᴇ 🚫", callback_data='close_data')]
 )
