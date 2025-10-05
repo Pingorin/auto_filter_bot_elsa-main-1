@@ -1003,12 +1003,12 @@ async def advantage_spell_chok(message):
         return
     user = message.from_user.id if message.from_user else 0
     buttons = [[
-        InlineKeyboardButton("🔍 ᴄʜᴇᴄᴋ sᴘᴇʟʟɪɴɢ ᴏɴ ɢᴏᴏɢʟᴇ 🔍", url=f"https://www.google.com/search?q={google}")
-    ]]
+        InlineKeyboardButton(text=movie.get('title'), callback_data=f"spol#{movie.movieID}#{user}")
+    ]
         for movie in movies
     ]
     buttons.append(
-        [InlineKeyboardButton(text="📬 REQUEST HERE📮 🚫", url=f"https://t.me/requestboxmovies")]
+        [InlineKeyboardButton(text="🚫 ᴄʟᴏsᴇ 🚫", callback_data='close_data')]
     )
     d = await message.reply_text(text=script.CUDNT_FND.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id=message.id)
     await asyncio.sleep(120)
