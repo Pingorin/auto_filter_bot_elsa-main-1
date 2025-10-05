@@ -133,9 +133,9 @@ async def next_page(bot, query):
         InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
         InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
         InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#{offset}#{req}")
-    ])
-    # Add separate button in its own row
-    btn.insert(1, [
+    ]
+    )
+    btn.insert(0, [
         InlineKeyboardButton("📞 sᴜᴘᴘᴏʀᴛ", url="https://t.me/your_support_link")
     ])
 
@@ -836,19 +836,16 @@ if offset != "":
             InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#0#{req}")
-        ])
-            # Add separate button in its own row
-    btn.insert(1, [
+        ]
+        )
+    btn.insert(0, [
         InlineKeyboardButton("📞 sᴜᴘᴘᴏʀᴛ", url="https://t.me/your_support_link")
     ])
     else:
         btn.insert(0, [
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#0#{req}")
-        ])        
-    btn.insert(1, [
-        InlineKeyboardButton("📞 sᴜᴘᴘᴏʀᴛ", url="https://t.me/your_support_link")
-    ])
+        ])
 else:
     if total_results >= 3:
         btn.insert(0, [
