@@ -836,12 +836,11 @@ if offset != "":
             InlineKeyboardButton("♻️ sᴇɴᴅ ᴀʟʟ", callback_data=batch_link),
             InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
             InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#0#{req}")
-        ]
-        )
+        ])
     btn.insert(0, [
         InlineKeyboardButton("📞 sᴜᴘᴘᴏʀᴛ", url="https://t.me/your_support_link")
     ])
-    else:
+else:
             btn.insert(0,[
                 InlineKeyboardButton("🥇ʙᴜʏ🥇", url=f"https://t.me/{temp.U_NAME}?start=buy_premium"),
                 InlineKeyboardButton("📰 ʟᴀɴɢᴜᴀɢᴇs", callback_data=f"languages#{key}#0#{req}")
